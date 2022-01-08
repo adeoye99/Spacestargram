@@ -4,7 +4,6 @@ import axios from "axios";
 function Imagecontainer() {
     return (
         <div>
-            <img src ="" ></img>
             <title></title>
         </div>
     )

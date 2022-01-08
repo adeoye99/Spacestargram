@@ -1,4 +1,3 @@
-
 import React,{useState,useEffect} from "react"; 
 import Imagecontainer from "./Imagecomponent/Imagecontainer";
 import axios from "axios";
@@ -10,14 +9,16 @@ function App() {
   const [description,setDescription ] = useState("");
   const [copyright,setCopyright ] = useState("");
 
-    useEffect (()=> {
-        axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-6-3&api_key=DEMO_KEY`)
+    useEffect(()=> {
+        axios
+        .get(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY`)
         .then((response) =>{
           const info = response.data;
           const copy = info.copywright;
           const dat = info.date;
           const topic = info.title;
           const make = info.hdurl;
+          const describe = info.explanation
           setDescription(describe)
           setImage(make)
           setTitle(topic)
@@ -29,13 +30,11 @@ function App() {
   return (
     <div className="App">
       <h1>Spacestargram</h1>
-      <img src ={show}></img>
+      <img src ={Image}></img>
       <p>{title}</p>
       <p>{date}</p>
       <p>{description}</p>
       <p>{copyright}</p>
-      <p>{}</p>
-
     </div>
   );
 }
