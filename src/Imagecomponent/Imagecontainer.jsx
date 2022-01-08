@@ -1,12 +1,13 @@
-import React from 'react'
+import React ,{useEffect,useState} from 'react';
+import axios from "axios";
 
 function Imagecontainer() {
     return (
         <div>
-            <img></img>
+            <img src ="" ></img>
             <title></title>
         </div>
     )
 }
 
-export default Imagecontainer
+export default Imagecontainer;
