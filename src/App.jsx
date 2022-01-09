@@ -1,41 +1,36 @@
 import React,{useState,useEffect} from "react"; 
 import Imagecontainer from "./Imagecomponent/Imagecontainer";
 import axios from "axios";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 function App() {
-  const [Image,setImage] =  useState("") ;
-  const [title,setTitle ] = useState("");
-  const [date,setDate ] = useState("");
-  const [description,setDescription ] = useState("");
-  const [copyright,setCopyright ] = useState("");
-
+  const [ Infos , setInfos] = useState([]);
     useEffect(()=> {
         axios
-        .get(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY`)
+        .get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=cgFx60Cd2ijjyPngdFKcKGO3tjDYKaYgwuNvkMzQ`)
         .then((response) =>{
-          const info = response.data;
-          const copy = info.copywright;
-          const dat = info.date;
-          const topic = info.title;
-          const make = info.hdurl;
-          const describe = info.explanation
-          setDescription(describe)
-          setImage(make)
-          setTitle(topic)
-          setDescription(describe)
-          setDate(dat)
-          setCopyright(copy)
+          const infos = response.data.photos;
+          console.log(infos)
+          setInfos(infos)
             })
-        }, [])
+        },[])
   return (
     <div className="App">
       <h1>Spacestargram</h1>
-      <img src ={Image}></img>
-      <p>{title}</p>
-      <p>{date}</p>
-      <p>{description}</p>
-      <p>{copyright}</p>
-    </div>
+         {Infos.map((info)=>{
+           return(
+             <div key = {info.key}>
+                 <img src ={info.img_src} alt = {info.title}></img>
+                 <div>  
+                   <p>{info.camera.full_name}</p>
+                   <p>{info.rover.name}</p>
+                   <p>{info.earth_date}</p>
+                   
+                 </div>
+               </div>
+           )
+       })}
+          </div>
   );
 }
 
