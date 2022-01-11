@@ -1,0 +1,13 @@
+.app__image{
+    width:100%;
+}
+.loader{
+    margin-left: 200px;
+    text-align: center;
+    justify-content: center;
+    margin-top: 200px;
+
+}
+h4{
+    font-style: italic;
+}
