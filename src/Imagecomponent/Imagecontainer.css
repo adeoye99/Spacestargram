@@ -1,0 +1,26 @@
+.imagecontainer{
+    width:90%;
+    background-color: white;
+    margin-left: auto;
+    margin-right:auto;
+    margin-top: 30px;
+    border-radius:  10px;
+    box-shadow: 10px 10px 10px 10px #ccc ;
+
+}
+.imagecontainer__image{
+    width:100%;
+    border-radius: 10px 10px 0  0;
+}
+.imagecontainer__date{
+    margin-top: 10px;
+    margin-left: 10px;
+
+}
+.name{
+    display: flex;
+}
+.imagecontainer__name{
+    margin-top:10px;
+    margin-left:10px;
+}
