@@ -5,24 +5,24 @@ import ClipLoader from "react-spinners/ClipLoader";
 import "./App.css";
 import { RequestQuoteRounded } from "@mui/icons-material";
 
-
-
 function App() {
   const [ Infos , setInfos] = useState([]);
   const [errors,setErrors] = useState();
   const [isLoading,setIsloading] = useState(false)
+  console.log(process.env.REACT_APP_API_KEY)
+  const API_KEY = process.env.REACT_APP_API_KEY;
 
    useEffect(()=> {
         setIsloading(true)
         axios
-        .get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=cgFx60Cd2ijjyPngdFKcKGO3tjDYKaYgwuNvkMzQ`)
+        .get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=${API_KEY}`)
         .then((response) =>{
           const infos = response.data.photos;
           setInfos(infos);
           setIsloading(false)
             })
          
-        },[]);
+        },[API_KEY]);
         function createContainer(Info){
          return(
           <Imagecontainer
